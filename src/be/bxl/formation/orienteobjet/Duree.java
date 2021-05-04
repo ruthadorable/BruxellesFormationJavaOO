@@ -1,11 +1,11 @@
 package be.bxl.formation.orienteobjet;
 import java.util.*;
 public class Duree {
-    int jours;
-    int heures;
-    int minutes;
-    int secondes;
-    String text;
+    private int jours;
+    private int heures;
+    private int minutes;
+    private int secondes;
+    private String text;
     public Duree(int nbSecondes)
     {
         this.heures=nbSecondes/3600;
@@ -23,7 +23,7 @@ public class Duree {
     }
     public String getDuree()
     {
-        return this.text;
+        return "Duree "+this.heures+"heure(s) "+this.minutes+" minute(s) "+this.secondes+ " secondes";
     }
     public int getTotalSeconde()
     {
@@ -31,15 +31,18 @@ public class Duree {
     }
     public void subDuree(Duree aSoustraire)
     {
-        this.heures-=aSoustraire.heures;
-        this.minutes-=aSoustraire.minutes;
-        this.secondes-=aSoustraire.secondes;
+        Duree d=new Duree(this.getTotalSeconde()-aSoustraire.getTotalSeconde());
+        this.heures=d.heures;
+        this.minutes=d.minutes;
+        this.secondes=d.secondes;
+
     }
     public void addDuree(Duree aAjouter)
     {
-        this.heures+=aAjouter.heures;
-        this.minutes+=aAjouter.minutes;
-        this.secondes+= aAjouter.secondes;
+        Duree d=new Duree(this.getTotalSeconde()+aAjouter.getTotalSeconde());
+        this.heures=d.heures;
+        this.minutes=d.minutes;
+        this.secondes=d.secondes;
     }
     //test
     public static void main (String []args)
@@ -47,5 +50,8 @@ public class Duree {
         Duree period=new Duree(45896);
         System.out.println(period.getTotalSeconde());
         Duree period2=new Duree(2,28,45,5);
+        Duree per=new Duree(1500);
+        period.subDuree(per);
+        System.out.println(period.getDuree());
     }
 }
