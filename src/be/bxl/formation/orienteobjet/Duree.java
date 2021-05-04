@@ -11,15 +11,13 @@ public class Duree {
         this.heures=nbSecondes/3600;
         this.minutes=((nbSecondes%3600)-heures)/60;
         this.secondes=(nbSecondes-heures*3600-minutes*60);
-        this.text="Duree "+this.heures+"heure(s) "+this.minutes+" minute(s) "+this.secondes+ " secondes";
-        System.out.println(text);
+        System.out.println(this.getDuree());
     }
     public Duree(int jour,int heure,int minute,int seconde)
     {   this.heures=(jour*24)+heure;
         this.minutes=minute;
         this.secondes=seconde;
-        this.text="Duree "+this.heures+"heure(s) "+this.minutes+" minute(s) "+this.secondes +" secondes";
-        System.out.println(text);
+        System.out.println(this.getDuree());
     }
     public String getDuree()
     {
